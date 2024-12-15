@@ -18,7 +18,11 @@ STOPWORDS = set(stopwords.words('english'))
 """
 class MovieGenreKeywordCount(MRJob):
     """
-        This mapper method yields key-value pairs: ((genre, keyword), 1)
+        The mapper method 
+        Input Parameters: 
+        - line: It is the single line from the dataset
+        Output:
+        - It yields key-value pairs: ((genre, keyword), 1)
     """
     def mapper(self, _, line):
         # source to read csv file: https://docs.python.org/3/library/csv.html
@@ -43,14 +47,22 @@ class MovieGenreKeywordCount(MRJob):
 
     """
         Combiner method used to sum up intermediate counts
-        It yields ([genre, word], sum(counts))
+        Input Parameters: 
+        -  genre_keyword: A tuple (genre, keyword) representing the key.
+        -  counts: A list of integer counts emitted by the mapper for this key.
+        Output:
+        - It yields ([genre, word], sum(counts))
     """              
-    def combiner(self, genre_keyword, counts): # key = genre_keyword(genre, keyword), value = counts
+    def combiner(self, genre_keyword, counts): # input: key = genre_keyword(genre, keyword), value = counts
         yield genre_keyword, sum(counts) 
 
     """
-         This reducer_count method combines counts grouped by (genre, keyword)
-         It yields (genre, (keyword, total_count)) key = genre, vaule = (keyword, total_count)
+        This reducer_count method combines counts grouped by (genre, keyword)
+        Input Parameters: 
+        - genre_keyword: A tuple (genre, keyword) representing the key.
+        - counts: A list of integer counts emitted by the combiner
+        Output:
+        - It yields (genre, (keyword, total_count)) key = genre, vaule = (keyword, total_count)
     """
     def reducer_count(self, genre_keyword, counts):
         genre, keyword = genre_keyword
@@ -58,12 +70,21 @@ class MovieGenreKeywordCount(MRJob):
     
     """
         This helper method extracts the count from each tuple (keyword, count)
+        Input Parameters:
+        - keyword_count: A tuple (keyword, count).
+        Output:
+        - The count value from the tuple.
     """
     def get_count(self,keyword_count):
         return keyword_count[1]
 
     """
         This reducer method gives only top 10 keywords for each genre
+        Input Parameters:
+        - genre: all genres
+        - keyword_counts: a list of tuples (keyword, count) for the genre.
+        Output:
+        - It yields key-value pairs: (genre, top_10_keyword).
     """
     def reducer_top10(self, genre, keyword_counts):
         # it sorts word counts by frequency and select the top 10
