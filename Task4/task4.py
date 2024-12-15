@@ -12,7 +12,7 @@ class FrobeniusNormMR(MRJob):
         Input Parameters: 
         - line: It is the single line(row) of the matrix
         Output:
-        - It yields each element of the row as a float number 
+        - It yields key-value pair none as key and each element of the row as value.
     """
     def mapper(self, _, line):
         for value in line.split():
@@ -41,8 +41,8 @@ class FrobeniusNormMR(MRJob):
         - Key: "Frobenius Norm:"
         - Value: Frobenius norm, calculated as the square root of the total sum.
     """
-    def reducer_frobenius_norm(self, _, total_sums):
-        frobenius_norm = sqrt(sum(total_sums))
+    def reducer_frobenius_norm(self, _, total_sum):
+        frobenius_norm = sqrt(sum(total_sum))
         yield "Frobenius Norm:", frobenius_norm
 
     """
