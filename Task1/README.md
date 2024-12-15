@@ -1,6 +1,4 @@
 ## Requirements
-We need:
-
 	- Python 3.6 or higher
 	- 'mrjob': For implementing MapReduce. (pip install mrjob)
 	- 'nltk' : For processing natural language and stopwords. (pip install nltk)
