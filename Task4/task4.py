@@ -1,38 +1,59 @@
 from mrjob.job import MRJob
 from mrjob.step import MRStep
-import numpy as np
+from math import sqrt
+
+"""
+    This class helps to calculate the Frobenius norm of a given matrix.
+"""
 
 class FrobeniusNormMR(MRJob):
+    """
+    The mapper method 
+        Input Parameters: 
+        - line: It is the single line(row) of the matrix
+        Output:
+        - It yields each element of the row as a float number 
+    """
+    def mapper(self, _, line):
+        for value in line.split():
+            yield None, float(value)
 
+    """
+    The reducer method 1:
+    It calculates the sum of the squares of the elements of the matrix.
+        Input Parameters:
+        - values: A list of float values representing matrix elements.
+        Output:
+        - It yields the total squared sum for all rows.
+    """
+    def reducer_sum_squares(self, _, values):
+        total_sum = 0
+        for value in values:
+            total_sum += value ** 2
+        yield None, total_sum
+
+    """
+    The reducer method 2:
+    It calculates the Frobenius Norm of the matrix.
+        Input Parameters:
+        - total_sum: the total sum of squares from the first reducer
+        Output:
+        - Key: "Frobenius Norm:"
+        - Value: Frobenius norm, calculated as the square root of the total sum.
+    """
+    def reducer_frobenius_norm(self, _, total_sums):
+        frobenius_norm = sqrt(sum(total_sums))
+        yield "Frobenius Norm:", frobenius_norm
+
+    """
+        This method defines the sequence of MapReduce steps.
+    """
     def steps(self):
         return [
-            MRStep(mapper=self.mapper_sum_of_squares,
-                   reducer=self.reducer_row_sum),
+            MRStep(mapper=self.mapper,
+                   reducer=self.reducer_sum_squares),
             MRStep(reducer=self.reducer_frobenius_norm)
         ]
-
-    def mapper_sum_of_squares(self, _, line):
-        # Parse each row of the matrix
-        numbers = list(map(float, line.strip().split()))
-        # Calculate the sum of squares for this row
-        row_sum_of_squares = 0
-        for num in numbers:
-            row_sum_of_squares += num ** 2  # Add the square of each number
-        # Emit intermediate result
-        yield None, row_sum_of_squares
-
-    def reducer_row_sum(self, _, row_sums):
-        # Aggregate the sum of squares from all rows
-        total_sum_of_squares = 0
-        for value in row_sums:
-            total_sum_of_squares += value
-        # Emit the total sum of squares
-        yield None, total_sum_of_squares
-
-    def reducer_frobenius_norm(self, _, total_sums):
-        # Calculate the Frobenius norm (square root of the total sum of squares)
-        frobenius_norm = np.sqrt(sum(total_sums))
-        yield "Frobenius Norm", frobenius_norm
-
+    
 if __name__ == '__main__':
     FrobeniusNormMR.run()
