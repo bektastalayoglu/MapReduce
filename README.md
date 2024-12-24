@@ -40,39 +40,33 @@ Each task has a Python script and a dataset file. Follow these steps to navigate
 
 ### Task 2
 - **Navigate to Task 2 directory**:
-  ```bash
-  cd ../Task2
-  ```
+  `cd ../Task2`
+
 - **Run the script** using the dataset `web-Google.txt`:
-  ```bash
-  python task2.py web-Google.txt > output.txt
-  ```
+  `python task2.py web-Google.txt > output.txt`
+
 - **Output** will be saved in `output.txt`.
 
 ---
 
 ### Task 3
 - **Navigate to Task 3 directory**:
-  ```bash
-  cd ../Task3
-  ```
+  `cd ../Task3`
+
 - **Run the script** using the dataset `Iris.csv`:
-  ```bash
-  python task3.py Iris.csv > output.txt
-  ```
+  `python task3.py Iris.csv > output.txt`
+
 - **Output** will be saved in `output.txt`.
 
 ---
 
 ### Task 4
 - **Navigate to Task 4 directory**:
-  ```bash
-  cd ../Task4
-  ```
+  `cd ../Task4`
+
 - **Run the script** using the dataset `A.txt`:
-  ```bash
-  python task4.py A.txt > output.txt
-  ```
+  `python task4.py A.txt > output.txt`
+  
 - **Output** will be saved in `output.txt`.
 
 ---
