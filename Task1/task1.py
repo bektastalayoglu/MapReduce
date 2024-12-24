@@ -1,8 +1,12 @@
 from mrjob.job import MRJob
 from mrjob.step import MRStep
 import re
-from nltk.corpus import stopwords
 import csv
+from nltk.corpus import stopwords
+import nltk
+
+nltk.download('stopwords')
+nltk.download('words')
 
 # source for regex: https://docs.python.org/3/library/re.html
 # It extracts words containing only letters.
