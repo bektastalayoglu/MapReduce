@@ -27,13 +27,11 @@ Each task has a Python script and a dataset file. Follow these steps to navigate
 
 ### Task 1
 - **Navigate to Task 1 directory**:
-  ```bash
-  cd Task1
-  ```
+  `cd Task1`
+
 - **Run the script** using the dataset `movies.csv`:
-  ```bash
-  python task1.py movies.csv > output.txt
-  ```
+  `python task1.py movies.csv > output.txt`
+  
 - **Output** will be saved in `output.txt`.
 
 ---
@@ -66,7 +64,7 @@ Each task has a Python script and a dataset file. Follow these steps to navigate
 
 - **Run the script** using the dataset `A.txt`:
   `python task4.py A.txt > output.txt`
-  
+
 - **Output** will be saved in `output.txt`.
 
 ---
