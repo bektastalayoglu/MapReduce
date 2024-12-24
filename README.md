@@ -8,21 +8,16 @@ This project contains multiple tasks that use Python scripts to process differen
 
 ### 1. Make `setup.sh` Executable
 Before setting up the environment, make the `setup.sh` file executable by running:
-```bash
-chmod +x setup.sh
-```
+`chmod +x setup.sh`
 
 ### 2. Run the Setup Script
 Execute the `setup.sh` script to create the virtual environment and install the required dependencies:
-```bash
-./setup.sh
-```
+`./setup.sh`
+
 
 ### 3. Activate the Virtual Environment
 Activate the virtual environment to ensure all required Python libraries are available:
-```bash
-source venv/bin/activate
-```
+`source venv/bin/activate`
 
 ---
 
