@@ -31,7 +31,7 @@ Each task has a Python script and a dataset file. Follow these steps to navigate
 
 - **Run the script** using the dataset `movies.csv`:
   `python task1.py movies.csv > output.txt`
-  
+
 - **Output** will be saved in `output.txt`.
 
 ---
@@ -73,9 +73,8 @@ Each task has a Python script and a dataset file. Follow these steps to navigate
 1. **Activate the virtual environment**: Always activate the environment (`source venv/bin/activate`) before running any task.
 2. **Reinstall dependencies**:
    If you encounter issues, reinstall dependencies by running:
-   ```bash
-   pip install -r requirements.txt
-   ```
+   `pip install -r requirements.txt`
+   
 3. **Output Files**: All outputs will be saved in the respective task directories as `output.txt`.
 4. **Virtual Environment**: The virtual environment will handle all dependencies required for this project.
 5. **Deactivate the virtual environment**: Run ```bash deactivate ``` to exit the environment.
