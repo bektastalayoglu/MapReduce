@@ -74,14 +74,12 @@ Each task has a Python script and a dataset file. Follow these steps to navigate
 2. **Reinstall dependencies**:
    If you encounter issues, reinstall dependencies by running:
    `pip install -r requirements.txt`
-   
-3. **Output Files**: All outputs will be saved in the respective task directories as `output.txt`.
-4. **Virtual Environment**: The virtual environment will handle all dependencies required for this project.
-5. **Deactivate the virtual environment**: Run ```bash deactivate ``` to exit the environment.
+3. **Virtual Environment**: The virtual environment will handle all dependencies required for this project.
+4. **Deactivate the virtual environment**: Run ```bash deactivate ``` to exit the environment.
 ---
 
 ## Directory Structure
-The project directory is structured as follows:
+The project directory is structured as shown below:
 ```
 Project/
 ├── setup.sh
