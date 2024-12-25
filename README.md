@@ -75,7 +75,7 @@ Each task has a Python script and a dataset file. Follow these steps to navigate
    If you encounter issues, reinstall dependencies by running:
    `pip install -r requirements.txt`
 3. **Virtual Environment**: The virtual environment will handle all dependencies required for this project.
-4. **Deactivate the virtual environment**: Run ```bash deactivate ``` to exit the environment.
+4. **Deactivate the virtual environment**: Run `deactivate` to exit the environment.
 ---
 
 ## Directory Structure
